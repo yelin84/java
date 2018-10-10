@@ -1,0 +1,14 @@
+
+
+这是Eclipse项目，请用Eclipse导入该项目。
+
+检查环境：( 在Eclipse界面下菜单 Window | Preference )
+
+(1) JAVA版本为1.8
+
+    Java | Installed JREs 
+
+(2) 字符集设为UTF-8
+    
+    General | Workspace | Text file encoding 
+
