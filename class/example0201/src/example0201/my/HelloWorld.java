@@ -90,8 +90,8 @@ public class HelloWorld
 		HelloWorld h =new HelloWorld();
 		double[] arr = {5000,6500,8000,9000,9500,12000,12500,14000,15500,17000,25000,28500,30000,35000,38500,40000,55000,58500,60000,80000,83500,85000,100000,150000};
 		for(int i = 0; i < arr.length;i++){
-			double taxNew = h.tax(arr[i]+1,"new");
-			double taxOld = h.tax(arr[i]+1,"old");
+			double taxNew = h.tax(arr[i]+10,"new");
+			double taxOld = h.tax(arr[i]+10,"old");
 			System.out.println("应税金融为："+arr[i]+"  老税率该交税："+taxOld+"   "+"新税率下：" + taxNew + "  少交："+(taxOld-taxNew));
 		}	
 	}
