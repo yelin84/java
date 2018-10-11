@@ -87,20 +87,102 @@ public class HelloWorld
 		double deduction = 0;//扣除数
 		double taxRate = 0;//税率
 		
-		
-		
-		
-		System.out.print(taxableAmount);
-
+		HelloWorld h =new HelloWorld();
+		double[] arr = {5000,6500,8000,9000,9500,12000,12500,14000,15500,17000,25000,28500,30000,35000,38500,40000,55000,58500,60000,80000,83500,85000,100000,150000};
+		for(int i = 0; i < arr.length;i++){
+			double taxNew = h.tax(arr[i]+1,"new");
+			double taxOld = h.tax(arr[i]+1,"old");
+			System.out.println("应税金融为："+arr[i]+"  老税率该交税："+taxOld+"   "+"新税率下：" + taxNew + "  少交："+(taxOld-taxNew));
+		}	
 	}
-
-	
-	public double tax (double taxableAmount1) 
+	public String toString()
 	{
-		double taxRate = 0;
-		double deduction= 0;
+		//for (int i=0;i<tax1.length;)
+		return "1";
+	}
+	public double tax (double taxableAmount,String status) 
+	{
+		double taxRateOld = 0;
+		double deductionOld= 0;
+		double taxRateNew = 0;
+		double deductionNew = 0;
+		double taxableAmount1 = 0;
+		double taxOld = 0;
+		double taxNew = 0;
+		if(status == "new") {
+			 taxableAmount1 = taxableAmount - 5000;
+		}else {
+			 taxableAmount1 = taxableAmount - 3500;
+		}
 		
-		double tax1 = taxableAmount1 * taxRate - deduction;
-		return tax1;
+		if(taxableAmount1<=1500) {
+			taxRateOld = taxRateNew = 0.03;
+			deductionOld = deductionNew = 0;
+			
+		}else if(taxableAmount1 > 1500 && taxableAmount1<=3000) {
+			taxRateOld = 0.1;
+			deductionOld = 105;
+			taxRateNew = 0.03;
+			deductionNew = 0;
+		}else if(taxableAmount1>3000 && taxableAmount1 <= 4500) {
+			taxRateOld = 0.1;
+			deductionOld = 105;
+			taxRateNew = 0.1;
+			deductionNew = 210;
+		}else if(taxableAmount1 >4500 && taxableAmount1 <= 9000) {
+			taxRateOld = 0.2;
+			deductionOld = 555;
+			taxRateNew = 0.1;
+			deductionNew = 210;
+		}else if(taxableAmount1 >9000 && taxableAmount1 <= 12000) {
+			taxRateOld = 0.25;
+			deductionOld = 1005;
+			taxRateNew = 0.1;
+			deductionNew = 210;
+		}else if(taxableAmount1 >12000 && taxableAmount1 <= 25000) {
+			taxRateOld = 0.25;
+			deductionOld = 1005;
+			taxRateNew = 0.2;
+			deductionNew = 1410;
+		}else if(taxableAmount1 >25000 && taxableAmount1 <= 35000) {
+			taxRateOld = 0.25;
+			deductionOld = 1005;
+			taxRateNew = 0.25;
+			deductionNew = 2660;
+		}else if(taxableAmount1 >35000 && taxableAmount1 <= 55000) {
+			taxRateOld = 0.3;
+			deductionOld = 2755;
+			taxRateNew = 0.3;
+			deductionNew = 4410;
+		}else if(taxableAmount1 >55000 && taxableAmount1 <= 80000) {
+			taxRateOld = 0.35;
+			deductionOld = 5505;
+			taxRateNew = 0.35;
+			deductionNew = 7160;
+		}else if(taxableAmount1 >80000) {
+			taxRateOld = 0.45;
+			deductionOld = 13505;
+			taxRateNew = 0.45;
+			deductionNew = 15160;
+		}
+		
+		if(status == "new") {
+			if(taxableAmount1<0)
+			{
+				taxNew = 0;
+			}else {
+				taxNew = taxableAmount1 * taxRateNew - deductionNew;
+			}
+			return taxNew;
+			  
+		}else {
+			if(taxableAmount1<0)
+			{
+				taxOld = 0;
+			}else {
+				taxOld = taxableAmount1 * taxRateOld - deductionOld;
+			}
+			 return taxOld;
+		}
 	}
 }
